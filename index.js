@@ -1,4 +1,5 @@
 
+
 const commando = require('discord.js-commando')
 const bot = new commando.Client({
     commandPrefix: 'b!',
@@ -9,7 +10,7 @@ bot.registry
     .registerDefaultTypes()
     .registerGroups([
         ['exciting', 'Exciting'],
-        ['conversation', 'Conversation'],
+        
         ['bellumutilities', 'Bellum Utilities'],
             
     ])
@@ -18,10 +19,16 @@ bot.registry
         ping: false
     })
     .registerCommandsIn(__dirname + "/commands");
-
+    
 bot.on('ready', () => {
     bot.user.setActivity('b!help');
+
 });
 
+bot.on("guildMemberAdd", function(member) {
+    member.guild.channels.find("name", "general").sendMessage(member.toString() + "Ooooi! Who's the new Pixie?");
 
-bot.login('NDQ1Mjc3MTIyMjUzMDI5Mzg2.Ddo5Ug.I8tHsj-fZS1dMI-JAPRN1wTeyEo');
+    member.addRole(member.guild.roles.find("name", "New Arrival"));
+});
+
+bot.login();
