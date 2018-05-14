@@ -1,0 +1,52 @@
+const commando = require('discord.js-commando');
+
+class BallCommand extends commando.Command {
+    constructor(client) {
+        super(client, {
+            name: '8ball',
+            group: 'random',
+            memberName: '8ball',
+            description: 'Bell can answer to you!',
+            examples: ['m!8ball Do you like me?'],
+            args: [{
+                key: 'question',
+                prompt: "I'm sorry, what did you say?",
+                type: 'string'
+            }]
+        });
+    }
+
+    async run (message, { question }) {
+        var choices = [
+            "Is Fratie here? If here's here I'll say no.", 
+            "Teehee! A big fat no!", 
+            "Nooooooo~!", 
+            "Since you were born!", 
+            "Since the moment I laid my eyes on you!", 
+            "With all of my heart, yes!",
+            "YEEEEAH BOOOOI!",
+            "With the blessing of Queen Clarion... YEET!", 
+            "Of course! You caught my eye, teehee...", 
+            "I can't say whether or not...", 
+            "ALL OF MY YES!", 
+            "I give all of my YEP.", 
+            "Sooooory, I didn't catch that...", 
+            "I'm busy! Ask Fratie or Mari.", 
+            "It's a secret, teehee~!", 
+            "Eeeh, I don't feel like telling...", 
+            "Sorry, I'm having a midlife crisis. Come back later.", 
+            "You can bet your wings I agree!", 
+            "Totally yes! Ten out of ten! Masterpiece!", 
+            "I say I agree!", 
+            "Why would you think yes?", 
+            "EEEEK! NOOOOO NO!", 
+            "No way...."
+        ];
+        var answer = choices[Math.floor(Math.random() * choices.length)];
+        return message.say(
+            "Q: " + question + "\nA: " + "" + answer + ""
+        );
+    }
+}
+
+module.exports = BallCommand;
