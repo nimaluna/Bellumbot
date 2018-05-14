@@ -1,0 +1,35 @@
+const commando = require('discord.js-commando');
+
+class FratienoCommand extends commando.Command {
+    constructor(client) {
+        super(client, {
+            name: 'fratieno',
+            group: 'exciting',
+            memberName: 'fratieno',
+            description: 'When Frater tells puns... it is awful!',
+
+        });
+    }
+    async run(message, args) {
+        var choices = [
+            "frATER NO!",
+            "***wheeze***",
+            "Frater stop pls",
+            "SPARE THE PIXIES FROM YOUR HORROR.",
+            "STOOOOOOOOOP! NO MORE PUNS!",
+            "Mari please save me from this disaster!",
+            "MARIIIIIIII!",
+        ];
+        var answer = choices[Math.floor(Math.random() * choices.length)];
+        var result = {
+            "embed": {
+                "title": ":fire: | Frater pls have mercy",
+                "description": answer + "",
+                "color": 14493755,
+            }
+        }
+        return message.say(result);
+    }
+}
+   
+module.exports = FratienoCommand;
