@@ -1,0 +1,44 @@
+const commando = require('discord.js-commando');
+
+class BirthdayCommand extends commando.Command {
+    constructor(client) {
+       super(client, {
+            name: 'birthday',
+            group: 'exciting',
+            memberName: 'birthday',
+            description: 'Have Bellum wish you a happy birthdy!',
+
+        });
+    }
+    async run(message, args) {
+       
+             if (message.author.id == 162644528656941056){
+            answer = [
+                "Aww happy birthday Lu~! Always happy to see you!",
+                "Did Fratie give you a present yet? He always was bad with present picking...'",
+                "Luuna! Teehee! You're getting older! Frater better hurry up and confe-- I mean, see you!",
+                "Lu! Luuuuna! I'm sure Fratie's got a present for you~!",
+            ];
+        }
+           else {answer = [
+            "It's YOUR birthday! Can we have cake?",
+            "Oooooh! Make a wish! Make a wish!",
+            "Teehee! It's your anniversary of your arrival day!",
+            "LET'S PARTY TILL WE DROP!",
+            "YEEEEEAH IT'S YA BIRTHDAY!",
+
+        ];}
+        
+            var answer = message[Math.floor(Math.random() *choices.length)];
+            var result = {
+            "embed": {
+                "title": ":birthday: | Happy Birthday!",
+                "description": answer + "",
+                "color": 14493755,
+            }
+        }
+        return message.say(result);
+    }
+}
+   
+module.exports = BirthdayCommand;
